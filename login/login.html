@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Login Form | CoderGirl</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-image: url(../log.jpg);
+            background-size: cover;
+            background-repeat: no-repeat;
+           
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        h2{
+            text-transform: uppercase;
+            padding-top: 3.5%;
+           
+        }
+
+        .container {
+            width: 500px;
+            background-color: transparent;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 1.9);
+            overflow: hidden;
+            text-align: center;
+            padding: 40px;
+            backdrop-filter:blur(15px) ;
+        }
+
+        .tabs {
+            display: flex;
+            justify-content: space-around;
+            margin-bottom: 20px;
+            cursor: pointer;
+            text-transform: uppercase;
+            font-weight:500;
+            font-size: medium;
+            font-weight: bold;
+          
+        }
+
+        .tab {
+            padding: 15px 30px;
+            
+            background-color: #f0f0f0;
+            transition: background-color 0.1s ease;
+        }
+
+        .tab.active {
+           
+            background-color: #113f67; 
+            color: #fff;
+        }
+
+        .form-content {
+            display: none;
+        }
+
+        .form-content.active {
+            display: block;
+        }
+
+        h2 {
+            color: #333;
+            margin-bottom: 20px;
+            font-weight: bold;
+        }
+
+        .input-group {
+            margin-bottom: 25px;
+            text-align: left;
+        }
+
+        label {
+            text-transform: uppercase;
+            font-weight: bolder;
+            font-family: serif;
+            display: block;
+            color: rgb(2, 2, 2);
+            margin-bottom: 8px;
+            font-size: 1.2em;
+            
+        }
+
+        .input-group input {
+            width: calc(100% -  30px);
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            outline: none;
+            transition: border-color 0.3s ease;
+            
+        }
+
+        .input-group input:focus {
+            background-color: #cccccc4e;
+        }
+        input{
+            text-transform: uppercase;
+        }
+
+        .btn {
+            width: 100%;
+            padding: 15px;
+            border: none;
+            border-radius: 10px;
+            background-color: #113f67; 
+            color: #ffffff;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            font-weight: bold;
+            font-size:medium;
+        }
+
+        .btn:hover {
+            background-color: #113f67;
+            
+        }
+
+    </style>
+</head>
+
+<body>
+    <div class="container">
+      
+        <div class="tabs">
+            <div style="border-radius: 15px 15px 0px 15px;" class="tab active" data-tab="admin">Admin</div>
+            <div style="border-radius:  15px 15px 15px 15px;" class="tab" data-tab="teacher">Teacher</div>
+            <div style="border-radius: 15px 15px 15px 0px;" class="tab" data-tab="student">Student</div>
+        </div>
+
+        <div class="form-inner">
+
+            <form action="../controller/insert_back.php" method="post">
+               
+                <div class="form-content active" id="admin"> 
+                    <h2>Admin Login</h2>
+                    <div class="input-group">
+                        <label for="adminid">Admin ID</label>
+                        <input name="adminid" type="text" id="adminid" required>
+                    </div>
+                    <div class="input-group">
+                        <label for="adminpassword">Password</label>
+                        <input name="password" type="number" id="adminpassword" required>
+                    </div>
+                    <br>
+                    <input class="btn" type="submit" name="loginadmin" value="Login">
+                </div>
+            </form>
+
+            <form action="../controller/insert_back.php" method="post">
+
+                <div class="form-content" id="teacher">
+                    <h2 >Teacher Login</h2>
+                    <div class="input-group">
+                        <label for="teacherid">Teacher ID</label>
+                        <input name="teacherid" type="number" id="teacherid" required>
+                    </div>
+                    <div class="input-group">
+                        <label for="teacherpassword">Password</label>
+                        <input name="password" type="number" id="teacherpassword" required>
+                    </div>
+                    <br>
+                    <input class="btn" type="submit" name="loginteacher" value="Login">
+                </div>
+            </form>
+
+            <form action="../controller/insert_back.php" method="post">
+              
+                <div class="form-content" id="student">
+                    <h2>Student Login</h2>
+                    <div class="input-group">
+                        <label for="studentid">Student ID</label>
+                        <input name="studentid" type="text" id="studentid" required>
+                    </div>
+                    <div class="input-group">
+                        <label for="studentpassword">Password</label>
+                        <input name="password" type="number" id="studentpassword" required>
+                    </div>
+                    <br>
+                    <input class="btn" type="submit" name="loginstudent" value="Login">
+                </div>
+            </form>
+
+        </div>
+    </div>
+
+    <script>
+        
+     
+    
+        document.querySelectorAll('.tab').forEach(tab => {
+            tab.addEventListener('click', () => {
+                document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+                tab.classList.add('active');
+
+                document.querySelectorAll('.form-content').forEach(content => content.classList.remove('active'));
+                document.getElementById(tab.getAttribute('data-tab')).classList.add('active');
+            });
+        });
+    </script>
+</body>
+
+</html>
